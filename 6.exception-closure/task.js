@@ -14,7 +14,7 @@ function validateCount(value) {
   }
 }
 
-Задача 2. Треугольник
+//Задача 2. Треугольник
 
 class Triangle {
   constructor(a, b, c) {
@@ -26,12 +26,12 @@ class Triangle {
     this.c = c;
   }
 
-  get perimeter() {
+  getPerimeter() {
     return this.a + this.b + this.c;
   }
 
-  get area() {
-    const p = this.perimeter / 2;
+  getArea() {
+    const p = this.getPerimeter() / 2;
     const area = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
     return +area.toFixed(3);
   }
@@ -47,5 +47,8 @@ function getTriangle(a, b, c) {
     };
   }
 }
+
+
+
 
 
