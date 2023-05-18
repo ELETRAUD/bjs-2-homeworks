@@ -80,7 +80,7 @@ class AlarmClock {
 
     const minutes = now.getMinutes().toString().padStart(2, '0');
 
-    return ${hours}:${minutes};
+    return `${hours}:${minutes}`;
 
   }
 
