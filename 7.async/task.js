@@ -24,7 +24,7 @@ class AlarmClock {
 
     if (foundAlarm) {
 
-      console.warn('Уже присутствует звонок на это же время');
+      console.warn('Уже присутствует звонок с таким id');
 
       return;
 
@@ -52,7 +52,19 @@ class AlarmClock {
 
     const initialLength = this.alarmCollection.length;
 
-    this.alarmCollection = this.alarmCollection.filter(alarm => alarm.id !== id);
+    const foundAlarm = this.alarmCollection.find(alarm => alarm.time === id);
+
+    if (!foundAlarm) {
+
+      // Если звонок с указанным временем не был найден, то выходим из метода
+
+      return false;
+
+    }
+
+ 
+
+    this.alarmCollection = this.alarmCollection.filter(alarm => alarm.id !== id && alarm.time !== foundAlarm.time);
 
     return initialLength !== this.alarmCollection.length;
 
@@ -68,7 +80,7 @@ class AlarmClock {
 
     const minutes = now.getMinutes().toString().padStart(2, '0');
 
-    return `${hours}:${minutes}`;
+    return ${hours}:${minutes};
 
   }
 
@@ -126,6 +138,14 @@ class AlarmClock {
 
   clearAlarms() {
 
+    if (this.alarmCollection.length === 0) {
+
+      return;
+
+    }
+
+ 
+
     this.stop();
 
     this.alarmCollection = [];
@@ -133,4 +153,3 @@ class AlarmClock {
   }
 
 }
-
